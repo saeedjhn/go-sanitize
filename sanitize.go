@@ -138,7 +138,8 @@ func (s Sanitize) recursively(param interface{}) (interface{}, error) {
 
 	switch paramValue.Kind() {
 	case reflect.String:
-		return s.String(param.(string)), nil
+		return s.String(reflect.ValueOf(param).String()), nil
+		//return s.String(param.(string)), nil
 
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64, reflect.Float32,
 		reflect.Float64, reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64, reflect.Bool:
